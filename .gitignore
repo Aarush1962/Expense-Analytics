@@ -1,0 +1,21 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ipynb_checkpoints/
+.DS_Store
+
+# generated data and charts
+data/processed/*
+reports/*
+!data/processed/.gitkeep
+!reports/.gitkeep
+
+# LaTeX build files (keep the .tex sources and final PDFs)
+docs/*.aux
+docs/*.log
+docs/*.nav
+docs/*.out
+docs/*.snm
+docs/*.toc
+docs/*.synctex.gz
