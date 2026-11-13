@@ -4,5 +4,5 @@
   "Shopping": ["amazon", "flipkart", "myntra"],
   "Bills & Rent": ["rent", "jio", "airtel"],
   "Groceries": ["reliance", "dmart", "blinkit", "zepto"],
-  "Income" : ["credit"]
+  "Income" : ["credit" , "monthly allowance"]
 }
