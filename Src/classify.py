@@ -4,9 +4,9 @@ import json
 
 
 def categorize(desc , rules) :
-     desc_lower = str(desc).lower ;
+     desc_lower = str(desc).lower() ;
 
-     for category , keywords in rules.item() :
+     for category , keywords in rules.items() :
           if any( k in desc_lower for k in keywords):
                return category ;
 
@@ -15,8 +15,8 @@ def categorize(desc , rules) :
 
 def classify(input_path , rule_path , out_path):
      df = pd.read_csv(input_path) ;
-     with open( rule_path , 'r') as Jsonfile :
-          rules = json.load(Jsonfile) ;
+     with open( rule_path , 'r') as f :
+          rules = json.load(f) ;
 
      df['Category'] = df['Description'].apply(lambda x : categorize(x,rules)) ;
 

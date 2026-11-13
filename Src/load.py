@@ -6,13 +6,12 @@ import sys
 def load_n_clean( file_path , outputPath):
 
 
-    df  = pd.read_csv(file_path) ; 
-
-    df  = df.dropna() ;
-    expenses = df [df['Type'] == 'Debit'].copy() 
-    expenses['Month'] = pd.to_datetime(expenses['Date']).dt.to_period('M').astype(str) ;
-    expenses.to_csv(outputPath , index = False) ;
-    print(f"Raw CSV File is Loaded and cleaned : {len(expenses)} valid debit rows  -> {outputPath} ") ; 
+    df  = pd.read_csv(file_path) ;
+    
+    transactions = df.dropna() ;
+    transactions['Month'] = pd.to_datetime(transactions['Date']).dt.to_period('M').astype(str) ;
+    transactions.to_csv(outputPath , index = False) ;
+    print(f"Raw CSV File is Loaded and cleaned : {len(transactions)} valid debit rows  -> {outputPath} ") ; 
 
 
 if __name__ == "__main__" :
