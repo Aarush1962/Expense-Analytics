@@ -7,11 +7,8 @@ FinalFile=$2
 head -n 1 "$OriginalFile" > "$FinalFile"
 
 tail -n +2 "$OriginalFile" \
-
 | grep -v "FAILED" \
- 
-| sed '/^$/d; s/ *, */ , /g ' \
-
+| sed '/^$/d; s/ *, */,/g ' \
 |sort -t',' -k2,2 >> "$FinalFile"  
 
 
