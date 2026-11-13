@@ -4,7 +4,7 @@ import json
 
 
 def categorize(desc , rules) :
-     des_lower = str(desc).lower ;
+     desc_lower = str(desc).lower ;
 
      for category , keywords in rules.item() :
           if any( k in desc_lower for k in keywords):
@@ -14,6 +14,17 @@ def categorize(desc , rules) :
 
 
 def classify(input_path , rule_path , out_path):
-     
+     df = pd.read_csv(input_path) ;
+     with open( rule_path , 'r') as Jsonfile :
+          rules = json.load(Jsonfile) ;
+
+     df['Category'] = df['Description'].apply(lambda x : categorize(x,rules)) ;
+
+     df.to_csv(out_path , index = False) ;
+     print(f"File is Categorized according to its Type of Transaction") ;
+
+if (__name__ == "__main__") :
+     classify(sys.argv[1] , sys.argv[2] , sys.argv[3]) ;     
+
 
      

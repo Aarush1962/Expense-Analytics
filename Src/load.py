@@ -10,7 +10,7 @@ def load_n_clean( file_path , outputPath):
 
     df  = df.dropna() ;
     expenses = df [df['Type'] == 'Debit'].copy() 
-    expenses(['Month']) = pd.to_datetime(expenses(['Date'])).dt.to_period('M').astype(str) ;
+    expenses['Month'] = pd.to_datetime(expenses['Date']).dt.to_period('M').astype(str) ;
     expenses.to_csv(outputPath , index = False) ;
     print(f"Raw CSV File is Loaded and cleaned : {len(expenses)} valid debit rows  -> {outputPath} ") ; 
 
