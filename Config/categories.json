@@ -1,0 +1,7 @@
+{
+  "Food": ["zomato", "swiggy", "pizza", "burger", "chai", "starbucks", "cafe"],
+  "Travel": ["uber", "ola", "metro", "irctc", "rapido"],
+  "Shopping": ["amazon", "flipkart", "myntra"],
+  "Bills & Rent": ["rent", "jio", "airtel"],
+  "Groceries": ["reliance", "dmart", "blinkit", "zepto"]
+}
