@@ -2,7 +2,7 @@
 
 set -e 
 
-RAW_CSV=${1:-"Data/raw/personal_transactions.csv"}
+RAW_CSV=${1:-"Data/raw/personal_transactions-3.csv"}
 
 bash Scripts/clean.sh "$RAW_CSV"  "Data/processed/unix_clean.csv" 
 python3  Src/load.py "Data/processed/unix_clean.csv" "Data/processed/cleaned_expenses.csv"
