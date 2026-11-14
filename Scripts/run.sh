@@ -12,8 +12,3 @@ python3  Src/budget.py "Data/processed/categorized.csv" "Config/budgets.json" "R
 python3 Src/plots.py "Data/processed/categorized.csv" "Reports"
 
 echo "pipeline Finished , Check Reports Folder"
-
-
-
-
-

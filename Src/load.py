@@ -16,4 +16,3 @@ def load_n_clean( file_path , outputPath):
 
 if __name__ == "__main__" :
     load_n_clean(sys.argv[1] , sys.argv[2]) ;
-
