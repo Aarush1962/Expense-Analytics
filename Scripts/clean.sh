@@ -12,4 +12,5 @@ tail -n +2 "$OriginalFile" \
 |sort -t',' -k2,2 >> "$FinalFile"  
 
 
-echo  "Raw Data File is Cleaned -> $FinalFile "
+echo  "Raw Data File is Cleaned and Ready to Use -> $FinalFile "
+

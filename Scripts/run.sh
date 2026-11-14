@@ -11,4 +11,4 @@ python3  Src/stats.py "Data/processed/categorized.csv"  "Reports/summary_report.
 python3  Src/budget.py "Data/processed/categorized.csv" "Config/budgets.json" "Reports/summary_report.txt" 
 python3 Src/plots.py "Data/processed/categorized.csv" "Reports"
 
-echo "pipeline Finished , Check Reports Folder"
+echo "pipeline Finished , Check Reports Folder . All Plots are Available"
