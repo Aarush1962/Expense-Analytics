@@ -3,8 +3,7 @@ import os
 import sys
 import pandas as pd
 
-WARN_AT = 0.8  # warn when 80% of the budget is used
-
+WARN_AT = 0.8  
 
 def check_budgets(input_path, budgets_path, out_dir):
     df = pd.read_csv(input_path)
@@ -49,11 +48,21 @@ def check_budgets(input_path, budgets_path, out_dir):
     report.to_csv(os.path.join(out_dir, "budget_vs_actual.csv"), index=False)
     violations.to_csv(os.path.join(out_dir, "budget_violations.csv"), index=False)
 
-    # spending in categories that have no budget defined
     unbudgeted = [c for c in actual.columns if c not in budgets]
+
+    report_path = os.path.join(out_dir, "summary_report.txt")
+    with open(report_path, "a") as f:
+        f.write("\n===== BUDGET REPORT =====\n")
+        f.write(report.to_string(index=False))
+        f.write(f"\n\n{len(violations)} budget violation(s) found.\n")
+        for _, r in violations.iterrows():
+            f.write(f"  EXCEEDED: {r['Month']} {r['Category']} - "
+                    f"spent {r['Actual']} of {r['Budget']}\n")
+        if unbudgeted:
+            f.write("No budget set for: " + ", ".join(unbudgeted) + "\n")
+
     if unbudgeted:
         print("No budget set for:", ", ".join(unbudgeted), "\n")
-
     print("Budget vs actual:\n", report.to_string(index=False), "\n")
     print(f"{len(violations)} budget violation(s) found.")
 
