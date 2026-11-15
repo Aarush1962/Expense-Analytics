@@ -67,5 +67,12 @@ def check_budgets(input_path, budgets_path, out_dir):
     print(f"{len(violations)} budget violation(s) found.")
 
 
+monthly = report.groupby("Month")[["Budget", "Actual"]].sum()
+monthly["Deviation"] = (monthly["Actual"] - monthly["Budget"]).round(2)
+data_dir = os.path.join(out_dir, "gnuplot_data")
+os.makedirs(data_dir, exist_ok=True)
+monthly[["Budget", "Actual", "Deviation"]].to_csv(os.path.join(data_dir, "budget_deviation.dat"), sep="\t", header=False,)
+
+
 if __name__ == "__main__":
     check_budgets(sys.argv[1], sys.argv[2], sys.argv[3])
