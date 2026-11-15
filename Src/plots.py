@@ -141,6 +141,23 @@ def generate_plots(input_path, output_dir):
             ]
         )
 
+    # Budget Deviation 
+    total_monthly_budget = sum(budgets.values())
+    write_dat(
+        data_dir / "budget_deviation.dat",
+        [
+             (
+                month,
+                total_monthly_budget,
+                row["Expenses"],
+                row["Expenses"] - total_monthly_budget,
+                )
+                for month, row in comparison.iterrows()
+            ]
+        )
+
+           
+
     # 8. Execute GNUplot
     gnuplot_script = project_dir / "Scripts" / "plots.gp"
 
